@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="mx-auto w-screen-xl -xl:w-full -xl:px-6">
+  <div class="mx-auto w-screen-xl relative -xl:w-full">
     <slot />
   </div>
 </template>

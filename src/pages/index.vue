@@ -1,30 +1,20 @@
 <template>
-  <div class="w-full relative">
-    <div
-      class="? h-screen mx-auto max-w-screen-xl relative -xl:w-full -xl:px-6"
-    >
-      <div
-        class="
-          ?
-          flex
-          w-1/2
-          flex-col
-          center-x-y
-          items-center
-          justify-center
-          -sm:w-full
-        "
-      >
-        <h1 class="font-bold mb-4 text-gray-800 text-6xl">
+  <div class="w-full relative -xl:px-6">
+    <app-layout class="h-screen">
+      <div class="flex flex-col w-1/2 center-x-y items-center -sm:w-full">
+        <h1 class="font-bold mb-2 w-full text-gray-800 text-6xl">
           Vue + Firebase Auth/API
         </h1>
-        <div class="mb-4 grid gap-2 grid-cols-2 -sm:grid-cols-1">
+        <p class="font-semibold text-xl w-full text-gray-800 text-opacity-80">
+          A base project with Vue 3 + Vite + WindiCSS + Firebase
+        </p>
+        <div class="mt-6 w-full grid gap-2 grid-cols-2 -sm:grid-cols-1">
           <button
             @click="goToLogin"
             p="y-2 x-8"
-            text="xl gray-800 hover:gray-50"
+            text="xl gray-50"
             font="bold"
-            bg="gray-50 hover:gray-800"
+            bg="gray-800"
             border="rounded-md"
           >
             Sign In
@@ -40,7 +30,10 @@
           </button>
         </div>
       </div>
-    </div>
+      <div class="font-bold mx-auto text-center w-full bottom-2 absolute">
+        <small>By Eco Development Studios</small>
+      </div>
+    </app-layout>
   </div>
 </template>
 

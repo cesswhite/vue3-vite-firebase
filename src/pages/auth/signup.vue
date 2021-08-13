@@ -1,10 +1,11 @@
 <template>
   <div class="bg-image-sign-up bg-default h-screen">
     <app-layout class="h-screen relative">
-      <div class="w-1/3 center-x-y">
-        <!-- <button
+      <div class="w-1/3 center-x-y -sm:w-11/12 -lg:w-2/4">
+        <auth-sign-up></auth-sign-up>
+        <button
           @click="goBack"
-          class="rounded-md flex bg-opacity-10 bg-gray-50 mb-4 py-1 px-4 items-center backdrop-filter backdrop-blur-sm"
+          class="rounded-md flex mt-4 py-1 px-4 items-center"
         >
           <svg
             class="h-4 fill-current text-gray-50 w-4"
@@ -19,8 +20,7 @@
             ></path>
           </svg>
           <span class="font-bold text-xl ml-2 text-gray-50">Back</span>
-        </button> -->
-        <auth-sign-up></auth-sign-up>
+        </button>
       </div>
     </app-layout>
   </div>
