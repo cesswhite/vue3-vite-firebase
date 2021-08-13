@@ -1,27 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import firebase from "firebase";
-// import { useRouter } from "vue-router";
-
-// const username = ref("");
-const email = ref("");
-const password = ref("");
-// const router = useRouter();
-const register = () => {
-  firebase
-    .auth() // get the auth api
-    .createUserWithEmailAndPassword(email.value, password.value) // need .value because ref()
-    .then((data) => {
-      alert("Successfully registered!");
-      console.log(data);
-    })
-    .catch((error) => {
-      alert(error.code);
-      alert(error.message);
-    });
-};
-</script>
-
 <template>
   <div class="w-full">
     <div class="mb-8">
@@ -30,8 +6,11 @@ const register = () => {
         Please create your account
       </h2>
     </div>
-    <div id="formContainer" class="rounded-xl bg-gray-50 shadow-xl py-10 px-6">
-      <form>
+    <div
+      id="formContainer"
+      class="border-default rounded-xl bg-gray-50 shadow-xl py-10 px-6"
+    >
+      <form action="">
         <!-- <div class="flex flex-col relative">
           <label class="label-default" for="usernameSignUp">Username</label>
           <input
@@ -46,10 +25,10 @@ const register = () => {
             <icon-heroicons-solid-user />
           </div>
         </div> -->
-        <div class="flex flex-col relative">
+        <div class="flex flex-col relative group">
           <label for="emailSignUp" class="label-default">Email</label>
           <input
-            class="input-default"
+            class="input-default group-hover:border-opacity-15"
             id="emailSignUp"
             type="text"
             placeholder="email"
@@ -60,10 +39,10 @@ const register = () => {
             <icon-heroicons-solid-mail />
           </div>
         </div>
-        <div class="flex flex-col relative">
+        <div class="flex flex-col relative group">
           <label for="passwordSignUp" class="label-default">Password</label>
           <input
-            class="input-default"
+            class="input-default group-hover:border-opacity-15"
             id="passwordSignUp"
             type="password"
             placeholder="password"
@@ -74,45 +53,73 @@ const register = () => {
             <icon-heroicons-solid-lock-closed />
           </div>
         </div>
-        <!-- <div class="flex flex-col relative">
-          <label for="confirmPasswordSignUp" class="label-default"
-            >Confirm Password</label
-          >
-          <input
-            class="input-default"
-            id="confirmPasswordSignUp"
-            type="password"
-            placeholder="password"
-            v-model="password"
-          />
-          <div class="icon-button">
-            <icon-heroicons-solid-lock-closed />
-          </div>
-        </div> -->
-        <!-- <div
-          class="font-semibold text-right text-sm text-gray-800 text-opacity-90"
-        >
-          <a href="">Forgot your password?</a>
-        </div> -->
-        <div>
-          <button class="mt-8 mb-8 w-full btn-primary" @click="register">
-            Join me!
-          </button>
-          <div class="flex flex-col justify-center items-center">
-            <p
-              class="
-                font-semibold
-                text-right text-md text-gray-800 text-opacity-60
-              "
-            >
-              Already have an account?
-              <router-link to="/auth/login" class="text-gray-800"
-                >Sign In</router-link
-              >
-            </p>
-          </div>
-        </div>
       </form>
+      <!-- <div class="flex flex-col relative">
+        <label for="confirmPasswordSignUp" class="label-default"
+          >Confirm Password</label
+        >
+        <input
+          class="input-default"
+          id="confirmPasswordSignUp"
+          type="password"
+          placeholder="password"
+          v-model="password"
+        />
+        <div class="icon-button">
+          <icon-heroicons-solid-lock-closed />
+        </div>
+      </div> -->
+      <div>
+        <button @click="register" class="mt-8 mb-8 w-full btn-primary">
+          Join me!
+        </button>
+        <div class="flex flex-col justify-center items-center">
+          <p
+            class="font-semibold text-right text-md text-gray-800 text-opacity-60"
+          >
+            Already have an account?
+            <router-link to="/auth/login" class="text-gray-800"
+              >Sign In</router-link
+            >
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import firebase from "firebase";
+import { useRouter } from "vue-router";
+
+// const username = ref("");
+const email = ref("");
+const password = ref("");
+const router = useRouter();
+const errMsg = ref();
+const register = () => {
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email.value, password.value)
+    .then((data) => {
+      router.push("/auth/login");
+    })
+    .catch((error) => {
+      switch (error.code) {
+        case "auth/invalid-email":
+          errMsg.value = "Invalid email";
+          break;
+        case "auth/user-not-found":
+          errMsg.value = "No account with that email was found";
+          break;
+        case "auth/wrong-password":
+          errMsg.value = "Incorrect password";
+          break;
+        default:
+          errMsg.value = "Email or password was incorrect";
+          break;
+      }
+    });
+};
+</script>

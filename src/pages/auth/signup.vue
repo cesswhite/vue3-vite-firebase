@@ -1,22 +1,13 @@
 <template>
-  <div class="bg-image-sign-up bg-cover bg-no-repeat bg-center h-screen">
+  <div class="bg-image-sign-up bg-default h-screen">
     <app-layout class="h-screen relative">
       <div class="w-1/3 center-x-y">
         <!-- <button
           @click="goBack"
-          class="
-            flex
-            rounded-md
-            bg-opacity-10 bg-gray-50
-            mb-4
-            py-1
-            px-4
-            items-center
-            backdrop-filter backdrop-blur-sm
-          "
+          class="rounded-md flex bg-opacity-10 bg-gray-50 mb-4 py-1 px-4 items-center backdrop-filter backdrop-blur-sm"
         >
           <svg
-            class="h-4 fill-current w-4 text-gray-50"
+            class="h-4 fill-current text-gray-50 w-4"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -47,5 +38,6 @@ const goBack = () => {
 <style scoped>
 .bg-image-sign-up {
   background-image: url("/img/backgroundv2.webp");
+  background-color: #fafafa;
 }
 </style>

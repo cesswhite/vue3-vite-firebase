@@ -7,7 +7,7 @@ export default defineConfig({
   darkMode: "class",
   plugins: [typography],
   shortcuts: {
-    "border-default": "border-2 border-gray-800 border-opacity-16",
+    "border-default": "border-2 border-gray-800 border-opacity-10",
     "label-default": "font-semibold text-gray-800/90 text-lg mb-2",
     "input-default":
       "border-default py-3 placeholder-gray-800 font-bold text-xl placeholder-opacity-20 rounded-md relative pl-12 mb-4",
