@@ -31,13 +31,8 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const goBack = () => {
-  router.back();
+  router.push("/");
 };
 </script>
 
-<style scoped>
-.bg-image-sign-up {
-  background-image: url("/img/backgroundv2.webp");
-  background-color: #fafafa;
-}
-</style>
+<style scoped></style>

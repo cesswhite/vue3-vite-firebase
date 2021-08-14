@@ -31,7 +31,7 @@
             class="input-default group-hover:border-opacity-15"
             id="emailSignUp"
             type="text"
-            placeholder="email"
+            placeholder="mail@mail.com"
             autocomplete="email"
             v-model="email"
           />
@@ -45,7 +45,7 @@
             class="input-default group-hover:border-opacity-15"
             id="passwordSignUp"
             type="password"
-            placeholder="password"
+            placeholder="*******"
             autocomplete="current-password"
             v-model="password"
           />

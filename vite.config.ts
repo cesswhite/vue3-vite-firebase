@@ -10,7 +10,7 @@ import { VitePWA } from "vite-plugin-pwa";
 export default defineConfig({
   plugins: [
     Vue(),
-    Pages(),
+    Pages({ nuxtStyle: true }),
     ViteComponents({
       directoryAsNamespace: true,
       customComponentResolvers: ViteIconsResolver({

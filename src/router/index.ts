@@ -5,7 +5,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
+console.table("ROUTES", routes);
 export default router;
 
 //Examples

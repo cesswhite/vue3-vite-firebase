@@ -37,3 +37,12 @@ html {
 .bg-default {
   @apply bg-cover bg-no-repeat bg-center;
 }
+.bg-image-sign-in {
+  background-image: url("/img/background.webp");
+  background-color: #fafafa;
+}
+
+.bg-image-sign-up {
+  background-image: url("/img/backgroundv2.webp");
+  background-color: #fafafa;
+}
