@@ -41,12 +41,34 @@
       </template>
     </app-menu-button>
     <div class="flex w-full bottom-4 absolute items-center">
-      <icon-heroicons-solid-logout class="text-xl mr-2" />
-      <span class="font-bold text-md"> Logout </span>
+      <button class="flex items-center" @click="logout">
+        <icon-heroicons-solid-logout class="text-xl mr-2" />
+        <span class="font-bold text-md"> Logout </span>
+      </button>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue"; // used for conditional rendering
+import firebase from "firebase";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const isLoggedIn = ref(true);
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    isLoggedIn.value = true; // if we have a user
+  } else {
+    isLoggedIn.value = false; // if we do not
+  }
+});
+
+const logout = () => {
+  firebase.auth().signOut();
+  router.push("/");
+};
+</script>
 
 <style scoped></style>

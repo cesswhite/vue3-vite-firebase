@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full grid grid-cols-6">
-    <div class="h-auto bg-gray-50 w-full px-2 col-span-1">
+  <div class="flex w-full">
+    <div class="h-auto bg-gray-50 px-2 w-1/6 -xl:w-1/5">
       <app-menu />
     </div>
-    <div class="bg-gray-200 bg-opacity-70 p-10 col-span-5">
+    <div class="bg-gray-200 bg-opacity-70 w-full p-10 -xl:w-4/5">
       Dashboard
       <router-view></router-view>
     </div>
