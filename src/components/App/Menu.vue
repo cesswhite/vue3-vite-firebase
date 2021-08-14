@@ -24,7 +24,7 @@
         <span>Read</span>
       </template>
     </app-menu-button>
-    <app-menu-button to="/app/crud/updated">
+    <app-menu-button to="/app/crud/update">
       <template v-slot:icon>
         <icon-heroicons-solid-pencil-alt class="mr-2" />
       </template>
