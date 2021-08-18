@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
 const apiClient: AxiosInstance = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: "https://dark-side-of-the-moon.herokuapp.com/api/",
   headers: {
     "Content-type": "application/json",
     "Access-Control-Allow-Origin": "*",
