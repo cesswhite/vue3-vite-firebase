@@ -6,6 +6,7 @@ import { createPinia } from "pinia";
 import "virtual:windi.css";
 import "virtual:windi-devtools";
 import "../src/assets/index.css";
+import Message from "./components/App/Message.vue";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAhZFOzp07S2iogpMf8v8AgvO0XVncHd6w",
@@ -19,6 +20,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const app = createApp(App);
+app.provide("$message", Message);
 app.use(router);
 app.use(createPinia());
 app.mount("#app");

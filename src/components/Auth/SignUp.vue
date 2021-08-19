@@ -1,16 +1,17 @@
 <template>
   <div class="w-full">
-    <div class="mb-8">
-      <h1 class="font-bold text-6xl text-gray-50">Welcome!</h1>
-      <h2 class="font-bold text-2xl text-gray-50 text-opacity-90">
-        Please create your account
-      </h2>
-    </div>
     <div
       id="formContainer"
       class="border-default rounded-xl bg-gray-50 shadow-xl py-10 px-6"
     >
-      <form action="">
+      <div class="text-center mb-8">
+        <svg-eco-logo class="mx-auto h-10 mb-2 w-10" />
+        <h1 class="font-bold mb-1 text-3xl text-gray-800">Create account</h1>
+        <h2 class="font-semibold text-lg text-gray-800 text-opacity-60">
+          Please fill the fields below
+        </h2>
+      </div>
+      <form action="" class="mb-4">
         <!-- <div class="flex flex-col relative">
           <label class="label-default" for="usernameSignUp">Username</label>
           <input
@@ -44,7 +45,7 @@
           <input
             class="input-default group-hover:border-opacity-15"
             id="passwordSignUp"
-            type="password"
+            :type="typePassword"
             placeholder="*******"
             autocomplete="current-password"
             v-model="password"
@@ -52,30 +53,46 @@
           <div class="icon-button">
             <icon-heroicons-solid-lock-closed />
           </div>
+          <button type="button" @click="showPassword" class="show-password">
+            <icon-heroicons-solid-eye-off v-if="closeEye" />
+            <icon-heroicons-solid-eye v-if="!closeEye" />
+          </button>
+        </div>
+        <div class="flex flex-col relative group">
+          <label for="confirmPasswordSignUp" class="label-default"
+            >Confirm password</label
+          >
+          <input
+            class="input-default group-hover:border-opacity-15"
+            id="confirmPasswordSignUp"
+            :type="confirmTypePassword"
+            placeholder="*******"
+            autocomplete="current-password"
+            v-model="confirmPassword"
+          />
+          <div class="icon-button">
+            <icon-heroicons-solid-lock-closed />
+          </div>
+          <button
+            type="button"
+            @click="confirmShowPassword"
+            class="show-password"
+          >
+            <icon-heroicons-solid-eye-off v-if="confirmCloseEye" />
+            <icon-heroicons-solid-eye v-if="!confirmCloseEye" />
+          </button>
         </div>
       </form>
-      <!-- <div class="flex flex-col relative">
-        <label for="confirmPasswordSignUp" class="label-default"
-          >Confirm Password</label
-        >
-        <input
-          class="input-default"
-          id="confirmPasswordSignUp"
-          type="password"
-          placeholder="password"
-          v-model="password"
-        />
-        <div class="icon-button">
-          <icon-heroicons-solid-lock-closed />
-        </div>
-      </div> -->
       <div>
-        <button @click="register" class="mt-8 mb-8 w-full btn-primary">
+        <button @click="register" class="mb-4 w-full btn-primary">
           Join me!
         </button>
         <div class="flex flex-col justify-center items-center">
           <p
-            class="font-semibold text-right text-md text-gray-800 text-opacity-60"
+            class="
+              font-semibold
+              text-right text-md text-gray-800 text-opacity-60
+            "
           >
             Already have an account?
             <router-link to="/auth/login" class="text-gray-800"
@@ -93,12 +110,37 @@ import { ref } from "vue";
 import firebase from "firebase";
 import { useRouter } from "vue-router";
 
-// const username = ref("");
-const email = ref("");
-const password = ref("");
-const router = useRouter();
-const errMsg = ref();
+let typePassword = ref("password"),
+  confirmTypePassword = ref("password");
+
+const closeEye = ref(false),
+  confirmCloseEye = ref(false),
+  showErrorMessage = ref(false),
+  email = ref(""),
+  password = ref(""),
+  confirmPassword = ref(""),
+  errMsg = ref(""),
+  router = useRouter();
+
+const showPassword = () => {
+  closeEye.value = !closeEye.value;
+  typePassword.value = typePassword.value === "password" ? "text" : "password";
+};
+
+const confirmShowPassword = () => {
+  confirmCloseEye.value = !confirmCloseEye.value;
+  confirmTypePassword.value =
+    confirmTypePassword.value === "password" ? "text" : "password";
+};
+
 const register = () => {
+  const pass: any = password.value;
+  const confirmPass: any = confirmPassword.value;
+
+  if (pass !== confirmPass) {
+    alert("Same data");
+    return;
+  }
   firebase
     .auth()
     .createUserWithEmailAndPassword(email.value, password.value)
@@ -106,6 +148,7 @@ const register = () => {
       router.push("/auth/login");
     })
     .catch((error) => {
+      console.log(error);
       switch (error.code) {
         case "auth/invalid-email":
           errMsg.value = "Invalid email";
@@ -120,6 +163,12 @@ const register = () => {
           errMsg.value = "Email or password was incorrect";
           break;
       }
+      showErrorMessage.value = true;
+
+      // Hidde element after two seconds
+      // setTimeout(() => {
+      //   showErrorMessage.value = false;
+      // }, 2000);
     });
 };
 </script>

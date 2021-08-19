@@ -2,11 +2,31 @@
   <div class="w-full relative -xl:px-6">
     <app-layout class="h-screen">
       <div class="flex flex-col w-1/2 center-x-y items-center -sm:w-full">
-        <h1 class="font-bold mb-2 w-full text-gray-800 text-6xl">
-          Vue + Firebase Auth/API
+        <h1 class="font-bold text-center mb-2 w-full text-gray-800 text-6xl">
+          White Project
         </h1>
         <p class="font-semibold text-xl w-full text-gray-800 text-opacity-80">
-          A base project with Vue 3 + Vite + WindiCSS + Firebase
+          A front-end project that use: 
+            <ul class="ml-2">
+              <li>
+                Vue 3
+              </li>
+              <li>
+                WindiCSS
+              </li>
+              <li>
+                Firebase Auth
+              </li>
+              <li>
+                Nodejs
+              </li>
+              <li>
+                Express
+              </li>
+              <li>
+                MongoDB
+              </li>
+            </ul>
         </p>
         <div class="mt-6 w-full grid gap-2 grid-cols-2 -sm:grid-cols-1">
           <button

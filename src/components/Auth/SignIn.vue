@@ -1,15 +1,16 @@
 <template>
   <div class="w-full">
-    <div class="mb-8">
-      <h1 class="font-bold text-6xl text-gray-50">Welcome Again!</h1>
-      <h2 class="font-bold text-2xl text-gray-50 text-opacity-90">
-        Please login to your account
-      </h2>
-    </div>
     <div
       id="formContainer"
       class="border-default rounded-xl bg-gray-50 shadow-xl py-10 px-6"
     >
+      <div class="text-center mb-8">
+        <svg-eco-logo class="mx-auto h-10 mb-2 w-10" />
+        <h1 class="font-bold mb-1 text-3xl text-gray-800">Welcome back</h1>
+        <h2 class="font-semibold text-lg text-gray-800 text-opacity-60">
+          Please login to your account
+        </h2>
+      </div>
       <form action="">
         <div class="flex flex-col relative group">
           <label for="emailSignIn" class="label-default">Email</label>
@@ -28,7 +29,7 @@
         <div class="flex flex-col relative group">
           <label for="passwordSignUp" class="label-default">Password</label>
           <input
-            class="input-default group-hover:border-opacity-15"
+            class="input-default group group-hover:border-opacity-15"
             id="passwordSignUp"
             type="password"
             placeholder="*******"
@@ -42,7 +43,7 @@
         <div
           class="font-semibold text-right text-sm text-gray-800 text-opacity-60"
         >
-          <a href="">Forgot your password?</a>
+          <a href="#">Forgot your password?</a>
         </div>
       </form>
 
@@ -52,7 +53,10 @@
         </button>
         <div class="flex flex-col justify-center items-center">
           <p
-            class="font-semibold text-right text-md text-gray-800 text-opacity-60"
+            class="
+              font-semibold
+              text-right text-md text-gray-800 text-opacity-60
+            "
           >
             No registered yet?
             <router-link to="/auth/signup" class="text-gray-800"
@@ -96,6 +100,9 @@ const login = () => {
           errMsg.value = "Email or password was incorrect";
           break;
       }
+
+      alert(error.code);
+      console.log(error);
     });
 };
 // const router = useRouter();
