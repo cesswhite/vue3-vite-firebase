@@ -44,7 +44,7 @@
             type="text"
             placeholder="mail@mail.com"
             autocomplete="email"
-            v-model="email"
+            v-model="email.trim"
           />
           <div class="icon-button">
             <icon-heroicons-solid-mail />
@@ -58,7 +58,7 @@
             :type="typePassword"
             placeholder="*******"
             autocomplete="current-password"
-            v-model="password"
+            v-model="password.trim"
           />
           <div class="icon-button">
             <icon-heroicons-solid-lock-closed />
@@ -78,7 +78,7 @@
             :type="confirmTypePassword"
             placeholder="*******"
             autocomplete="current-password"
-            v-model="confirmPassword"
+            v-model="confirmPassword.trim"
           />
           <div class="icon-button">
             <icon-heroicons-solid-lock-closed />

@@ -5,11 +5,11 @@
       class="
         border-default
         rounded-xl
-        flex
-        flex-col
+        flex flex-col
         bg-gray-50
         shadow-xl
-        py-10 px-6
+        py-10
+        px-6
         justify-center
         -sm:rounded-none -sm:h-screen -sm:shadow-none
       "
@@ -30,7 +30,7 @@
             type="text"
             placeholder="mail@mail.com"
             autocomplete="email"
-            v-model="email"
+            v-model="email.trim"
           />
           <div class="icon-button">
             <icon-heroicons-solid-mail />
@@ -44,7 +44,7 @@
             type="password"
             placeholder="*******"
             autocomplete="current-password"
-            v-model="password"
+            v-model="password.trim"
           />
           <div class="icon-button">
             <icon-heroicons-solid-lock-closed />
