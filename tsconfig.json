@@ -13,8 +13,7 @@
     "types": [
       "vite/client",
       "vite-plugin-pages/client",
-      "vite-plugin-pwa/client",
-      "google.maps"
+      "vite-plugin-pwa/client"
     ]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
