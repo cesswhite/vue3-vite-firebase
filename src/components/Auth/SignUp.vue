@@ -1,8 +1,18 @@
 <template>
-  <div class="w-full">
+  <div class="w-full -sm:h-screen -sm:w-full">
     <div
       id="formContainer"
-      class="border-default rounded-xl bg-gray-50 shadow-xl py-10 px-6"
+      class="
+        border-default
+        rounded-xl
+        flex flex-col
+        bg-gray-50
+        shadow-xl
+        py-10
+        px-6
+        justify-center
+        -sm:rounded-none -sm:h-screen -sm:shadow-none
+      "
     >
       <div class="text-center mb-8">
         <svg-eco-logo class="mx-auto h-10 mb-2 w-10" />

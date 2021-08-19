@@ -1,5 +1,8 @@
 <template>
-  <button @click="goBack" class="rounded-md flex mt-4 py-1 px-4 items-center">
+  <button
+    @click="goBack"
+    class="rounded-md flex mt-4 py-1 px-4 items-center -sm:hidden"
+  >
     <svg
       class="h-4 fill-current text-gray-800 w-4"
       fill="currentColor"
