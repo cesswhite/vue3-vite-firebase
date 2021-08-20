@@ -1,11 +1,12 @@
 import { defineConfig } from "vite-plugin-windicss";
 import typography from "windicss/plugin/typography";
+import forms from "windicss/plugin/forms";
 import colors from "windicss/colors";
 
 export default defineConfig({
   attributify: true,
   darkMode: "class",
-  plugins: [typography],
+  plugins: [typography, forms],
   shortcuts: {
     "border-default": "border-2 border-gray-800 border-opacity-10",
     "label-default": "font-semibold text-gray-800/90 text-lg mb-2",
