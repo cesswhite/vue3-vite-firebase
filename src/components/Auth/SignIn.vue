@@ -30,7 +30,7 @@
             type="text"
             placeholder="mail@mail.com"
             autocomplete="email"
-            v-model="email.trim"
+            v-model.trim="email"
           />
           <div class="icon-button">
             <icon-heroicons-solid-mail />
@@ -44,7 +44,7 @@
             type="password"
             placeholder="*******"
             autocomplete="current-password"
-            v-model="password.trim"
+            v-model.trim="password"
           />
           <div class="icon-button">
             <icon-heroicons-solid-lock-closed />
