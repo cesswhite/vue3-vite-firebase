@@ -3,8 +3,7 @@
     <div class="h-auto bg-gray-50 px-2 w-1/6 -xl:w-1/5">
       <app-menu />
     </div>
-    <div class="bg-gray-200 bg-opacity-70 w-full p-10 -xl:w-4/5">
-      Dashboard
+    <div class="bg-gray-200 bg-opacity-70 w-full -xl:w-4/5">
       <router-view></router-view>
     </div>
   </div>

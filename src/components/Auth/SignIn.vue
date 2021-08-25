@@ -25,6 +25,7 @@
         <div class="flex flex-col relative group">
           <label for="emailSignIn" class="label-default">Email</label>
           <input
+            required
             class="input-default group-hover:border-opacity-15"
             id="emailSignIn"
             type="text"
@@ -39,12 +40,14 @@
         <div class="flex flex-col relative group">
           <label for="passwordSignUp" class="label-default">Password</label>
           <input
+            required
             class="input-default group group-hover:border-opacity-15"
             id="passwordSignUp"
             type="password"
             placeholder="*******"
             autocomplete="current-password"
             v-model.trim="password"
+            v-on:keyup.enter="login"
           />
           <div class="icon-button">
             <icon-heroicons-solid-lock-closed />
@@ -55,12 +58,18 @@
         >
           <a href="#">Forgot your password?</a>
         </div>
+        <button
+          type="button"
+          @click="login"
+          class="mt-8 mb-8 w-full btn-primary"
+        >
+          <span v-if="!showLoading"> Let's go! </span>
+          <icon-eos-icons-loading v-else class="h-7" />
+        </button>
       </form>
 
       <div>
-        <button @click="login" class="mt-8 mb-8 w-full btn-primary">
-          Let's go!
-        </button>
+        <!-- {{ errMsg }} -->
         <div class="flex flex-col justify-center items-center">
           <p
             class="
@@ -84,11 +93,14 @@ import { ref } from "vue";
 import firebase from "firebase";
 import { useRouter } from "vue-router";
 
+const showLoading = ref(false);
 const email = ref("");
 const password = ref("");
 const errMsg = ref();
 const router = useRouter();
 const login = () => {
+  showLoading.value = true;
+
   firebase
     .auth()
     .signInWithEmailAndPassword(email.value, password.value)
@@ -104,15 +116,16 @@ const login = () => {
           errMsg.value = "No account with that email was found";
           break;
         case "auth/wrong-password":
-          errMsg.value = "Incorrect password";
+          errMsg.value = "Email or password was incorrect";
           break;
         default:
           errMsg.value = "Email or password was incorrect";
           break;
       }
+      showLoading.value = false;
 
       alert(error.code);
-      console.log(error);
+      // console.log(error);
     });
 };
 // const router = useRouter();

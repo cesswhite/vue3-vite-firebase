@@ -17,7 +17,7 @@ export default defineConfig({
     "show-password":
       "absolute top-12 w-8 h-8 right-2 flex items-center justify-center fill-current text-gray-800 text-opacity-20 text-xl px-1 py-1 cursor-pointer hover:text-opacity-40 focus:outline-none",
     "btn-primary":
-      "font-bold bg-gray-800 text-xl py-3 text-gray-50 px-8 rounded-md",
+      "font-bold bg-gray-800 text-xl py-3 text-gray-50 px-8 rounded-md flex items-center justify-center",
   },
   theme: {
     extend: {

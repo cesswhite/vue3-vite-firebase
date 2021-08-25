@@ -14,16 +14,18 @@
       justify-center
     "
   >
-    <!-- <p class="font-bold text-lg text-red-700">{{ errMsg }}</p> -->
-    <p class="font-bold text-lg text-red-700">This is a tes</p>
+    <p class="font-bold text-lg text-red-700">This is a test</p>
   </div>
 </template>
 
 <script setup lang="ts">
+defineProps({
+  show: Boolean,
+});
 import { onMounted } from "vue";
 
 onMounted(() => {
-  alert("Global property");
+  // alert("Global property");
 });
 </script>
 

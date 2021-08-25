@@ -6,7 +6,7 @@ import { createPinia } from "pinia";
 import "virtual:windi.css";
 import "virtual:windi-devtools";
 import "../src/assets/index.css";
-import Message from "./components/App/Message.vue";
+import Message from "./plugins/message";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAhZFOzp07S2iogpMf8v8AgvO0XVncHd6w",
@@ -20,7 +20,15 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const app = createApp(App);
-app.provide("$message", Message);
+// app.directive("loading", (el, binding) => {
+//   const overlay = document.createElement("div");
+//   overlay.classList.add("w-full", "h-screen", "bg-gray-900", "bg-opacity-30");
+//   if (binding.value) {
+//     el.appendChild(overlay);
+//   }
+// });
+// app.provide("$message", Message);
+app.use(Message);
 app.use(router);
 app.use(createPinia());
 app.mount("#app");
